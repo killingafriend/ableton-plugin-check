@@ -1,0 +1,16 @@
+{
+  "name": "plugin-check",
+  "productName": "Plugin Check",
+  "version": "0.1.0",
+  "description": "Ableton-Session per Drag & Drop analysieren, Plugin-Liste teilen und herausfinden, welche Spuren gefroren werden müssen.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "web": "python3 -m http.server 5173 --directory src",
+    "package": "electron-packager . \"Plugin Check\" --platform=darwin --arch=arm64 --out=dist --overwrite --icon=build/icon.icns --ignore='^/dist' --ignore='^/build' --ignore='^/\\.claude'"
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.3.0",
+    "electron": "^33.0.0"
+  }
+}

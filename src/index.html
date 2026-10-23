@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plugin Check</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="dot"></span>Plugin Check</div>
+    <div class="inv" id="inv"></div>
+  </header>
+
+  <main>
+    <section id="drop" class="drop">
+      <div class="zones">
+        <div class="zone" data-kind="als">
+          <div class="zone-tag tracked"><span>1</span><span>.als</span></div>
+          <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M8 30V20a7 7 0 0 1 7-7h20l9 10h41a7 7 0 0 1 7 7v47a7 7 0 0 1-7 7H15a7 7 0 0 1-7-7z"/><path d="M8 34h84"/></svg>
+          <h1>Import Ableton session</h1>
+          <p>Drop an <b>.als</b> file or a project folder to read every plugin.<br>
+             Then export the plugin list and send it to your collaborator.</p>
+          <button class="btn" id="pickAls">Choose .als …</button>
+        </div>
+        <div class="zone" data-kind="json">
+          <div class="zone-tag tracked"><span>2</span><span>.json</span></div>
+          <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="16" cy="22" r="6"/><rect x="32" y="15" width="56" height="14" rx="7"/><circle cx="16" cy="50" r="6"/><rect x="32" y="43" width="56" height="14" rx="7"/><circle cx="16" cy="78" r="6"/><rect x="32" y="71" width="56" height="14" rx="7"/></svg>
+          <h1>Import plugin list</h1>
+          <p>Drop a <b>.pluginlist.json</b> to compare it with your installed plugins.<br>
+             See which tracks have to be frozen because plugins are missing.</p>
+          <button class="btn" id="pickJson">Choose list …</button>
+        </div>
+      </div>
+      <div class="err" id="err" hidden></div>
+    </section>
+
+    <section id="result" hidden>
+      <div class="head">
+        <div>
+          <h2 id="sname"></h2>
+          <div class="meta" id="smeta"></div>
+        </div>
+        <div class="actions">
+          <button class="btn" id="export">Plugin-Liste exportieren</button>
+          <button class="btn ghost" id="again">Andere Datei …</button>
+        </div>
+      </div>
+
+      <div class="verdict" id="verdict"></div>
+
+      <div class="bar">
+        <div class="seg" id="filter">
+          <button data-f="problems">Probleme</button>
+          <button data-f="all">Alle Spuren</button>
+        </div>
+        <button class="btn ghost small" id="copy">Freeze-Liste kopieren</button>
+      </div>
+
+      <div id="tracks"></div>
+
+      <details class="installed" id="installedBox">
+        <summary id="installedSum"></summary>
+        <div id="installedList"></div>
+      </details>
+    </section>
+  </main>
+
+  <div class="busy" id="busy" hidden>Lese Session …</div>
+  <input type="file" id="file" accept=".als,.json" hidden>
+
+  <script src="als.js"></script>
+  <script src="compare.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
